@@ -1,1076 +1,727 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Le Soleil en Bouche - Tapenades & Olives Artisanales Varoises</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Le Soleil en Bouche - Tapenades et olives artisanales varoises. Fabrication artisanale, stands de marché et envoi à domicile à partir d'1 kg.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Le Soleil en Bouche – Olives & tapenades artisanales</title>
+  <meta name="description" content="Le Soleil en Bouche : olives et tapenades artisanales du Sud, 100% vegan. Marchés & salons. Pack découverte et commandes." />
+  <meta name="theme-color" content="#0b0b0b" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Le Soleil en Bouche" />
+  <meta property="og:description" content="Meilleurs avec la bouche qu’avec les yeux. Olives & tapenades artisanales, 100% vegan. Marchés & salons." />
+  <meta property="og:type" content="website" />
+
   <style>
-    :root {
-      --bg-dark: #121212;
-      --bg-card: #1c1c1c;
-      --accent-yellow: #f3c045;
-      --accent-yellow-soft: #f6d27a;
-      --olive-light: #a7b57a;
-      --olive-dark: #3e4a2c;
-      --text-light: #f7f3e9;
-      --text-muted: #b5b1a8;
-      --danger: #d9534f;
-      --max-width: 1180px;
+    :root{
+      --bg:#070707;
+      --card:#101010;
+      --text:#f5f5f5;
+      --muted:rgba(245,245,245,.72);
+      --line:rgba(245,245,245,.12);
+      --accent:#d7b36a; /* doré */
+      --accent2:#f0d79a;
+      --shadow: 0 18px 45px rgba(0,0,0,.45);
+      --r: 18px;
+      --r2: 26px;
+      --max: 1100px;
+      --pad: clamp(16px, 3.5vw, 28px);
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(215,179,106,.16), transparent 60%),
+                  radial-gradient(900px 700px at 90% 0%, rgba(240,215,154,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
     }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #262216 0, #050505 55%, #000 100%);
-      color: var(--text-light);
-      line-height: 1.6;
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background: rgba(7,7,7,.75);
+      border-bottom:1px solid var(--line);
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:12px 0;
     }
-
-    img {
-      max-width: 100%;
-      display: block;
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none;
+      min-width: 240px;
     }
-
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(5,5,5,0.85);
-      border-bottom: 1px solid rgba(243,192,69,0.15);
+    .brand img{
+      width:46px; height:46px; object-fit:contain;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));
     }
-
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0.55rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+    .brand .name{
+      font-weight:850; letter-spacing:.6px; text-transform:uppercase;
+      line-height:1.05;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+    .brand .tag{
+      font-size:.93rem; color:var(--muted);
+      margin-top:2px;
     }
-
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 2px solid var(--accent-yellow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-yellow);
+    .menu{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+      align-items:center;
     }
-
-    .brand-text h1 {
-      font-size: 0.95rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+    .menu a{
+      text-decoration:none;
+      padding:8px 10px;
+      border:1px solid transparent;
+      border-radius:12px;
+      color:var(--muted);
+      font-size:.95rem;
     }
-
-    .brand-text span {
-      font-size: 0.7rem;
-      color: var(--text-muted);
+    .menu a:hover{
+      border-color:var(--line);
+      color:var(--text);
+      background: rgba(255,255,255,.04);
     }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.85rem;
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      text-decoration:none;
+      border:1px solid rgba(215,179,106,.38);
+      background: linear-gradient(180deg, rgba(215,179,106,.22), rgba(215,179,106,.12));
+      color: var(--text);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      font-weight:700;
+      white-space:nowrap;
     }
-
-    nav a {
-      padding: 0.35rem 0.65rem;
-      border-radius: 999px;
-      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
-    }
-
-    nav a:hover {
-      background: rgba(243,192,69,0.12);
-      color: var(--accent-yellow);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta {
-      border: 1px solid var(--accent-yellow);
-      color: var(--accent-yellow);
-      padding-inline: 0.9rem;
-    }
-
-    .nav-toggle {
-      display: none;
-      font-size: 1.3rem;
-      cursor: pointer;
+    .cta:hover{
+      border-color: rgba(215,179,106,.75);
+      background: linear-gradient(180deg, rgba(240,215,154,.24), rgba(215,179,106,.14));
     }
 
     /* HERO */
-
-    .hero {
-      position: relative;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 1.7rem 1.25rem 2.2rem;
-      display: grid;
-      grid-template-columns: minmax(0,1.25fr) minmax(0,1fr);
-      gap: 2rem;
-      align-items: center;
+    .hero{padding: 42px 0 18px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:18px;
+      align-items:stretch;
     }
-
-    .hero-copy {
-      z-index: 1;
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr; }
+      .brand{min-width:unset}
     }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      color: var(--accent-yellow-soft);
-      padding: 0.2rem 0.7rem;
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      border-radius: var(--r2);
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 3vw, 26px);
+      position:relative;
+      overflow:hidden;
+    }
+    .panel:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(520px 320px at 12% 0%, rgba(215,179,106,.18), transparent 60%),
+                  radial-gradient(450px 280px at 90% 0%, rgba(240,215,154,.12), transparent 58%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .panel > *{position:relative}
+    .badge{
+      display:inline-flex;
+      gap:8px; align-items:center;
+      border: 1px solid rgba(215,179,106,.40);
+      background: rgba(215,179,106,.10);
+      color: var(--text);
+      padding:6px 10px;
       border-radius: 999px;
-      background: rgba(243,192,69,0.08);
-      border: 1px solid rgba(243,192,69,0.25);
-      margin-bottom: 0.7rem;
-    }
-
-    .hero-badge span:last-child {
-      opacity: 0.85;
-    }
-
-    .hero h2 {
-      font-size: 2.15rem;
-      line-height: 1.2;
-      margin-bottom: 0.65rem;
-    }
-
-    .hero h2 span {
-      color: var(--accent-yellow);
-    }
-
-    .hero-subtitle {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      max-width: 34rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .hero-highlights {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .pill {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.03);
-      color: var(--text-muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      padding: 0.7rem 1.25rem;
-      border-radius: 999px;
-      border: none;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #f3c045, #f6d27a);
-      color: #3b2a00;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.55);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.7);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-light);
-      border: 1px solid rgba(255,255,255,0.25);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.06);
-    }
-
-    .hero-note {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      max-width: 30rem;
-    }
-
-    .hero-media {
-      position: relative;
-    }
-
-    .hero-card {
-      background: radial-gradient(circle at top, #262216 0, #17140f 55%, #0c0b09 100%);
-      border-radius: 1.3rem;
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.75);
-      border: 1px solid rgba(243,192,69,0.3);
-      position: relative;
-      isolation: isolate;
-    }
-
-    .hero-image-wrap {
-      position: relative;
-      overflow: hidden;
-      max-height: 260px;
-    }
-
-    .hero-image-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.75), transparent 55%);
-      pointer-events: none;
-    }
-
-    .hero-card img {
-      width: 100%;
-      object-fit: cover;
-      transform: scale(1.02);
-    }
-
-    .hero-caption {
-      position: absolute;
-      left: 1rem;
-      bottom: 1rem;
-      z-index: 2;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      background: rgba(0,0,0,0.6);
-      padding: 0.4rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .hero-card-body {
-      padding: 0.9rem 1rem 1rem;
-      font-size: 0.85rem;
-    }
-
-    .hero-card-body h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .hero-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1.2rem;
-      margin-top: 0.45rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent-yellow);
-      margin-right: 0.4rem;
-      display: inline-block;
-    }
-
-    /* SECTIONS GLOBAL */
-
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto 3rem;
-      padding: 0 1.25rem 2.5rem;
-    }
-
-    section {
-      margin-top: 2.6rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .section-title {
-      font-size: 1.45rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .section-title span {
-      color: var(--accent-yellow);
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      max-width: 32rem;
-    }
-
-    /* PRODUITS */
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1rem;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border-radius: 0.95rem;
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 0.9rem;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.65);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-tag {
-      position: absolute;
-      top: 0.7rem;
-      left: 0.7rem;
-      font-size: 0.7rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.7);
-      color: var(--accent-yellow-soft);
-      border: 1px solid rgba(243,192,69,0.35);
-    }
-
-    .card-image {
-      border-radius: 0.75rem;
-      overflow: hidden;
-      margin-bottom: 0.75rem;
-      border: 1px solid rgba(255,255,255,0.06);
-      max-height: 170px;
-    }
-
-    .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.03);
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .card p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .card-meta {
-      margin-top: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      margin-top: 0.5rem;
-    }
-
-    .chip {
-      font-size: 0.72rem;
-      padding: 0.2rem 0.45rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text-muted);
-    }
-
-    /* SAVOIR-FAIRE */
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 1.4rem;
-      align-items: start;
-    }
-
-    .story-block {
-      background: linear-gradient(145deg, #17140f, #121212);
-      border-radius: 1rem;
-      padding: 1rem;
-      border: 1px solid rgba(243,192,69,0.18);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.7);
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .story-block h3 {
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
-      color: var(--text-light);
-    }
-
-    .story-points {
-      margin-top: 0.6rem;
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.85rem;
-    }
-
-    .story-points li {
-      list-style: none;
-      position: relative;
-      padding-left: 1rem;
-    }
-
-    .story-points li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--accent-yellow);
-    }
-
-    .badge-line {
-      font-size: 0.78rem;
-      margin-top: 0.7rem;
-      color: var(--accent-yellow-soft);
-    }
-
-    .story-photo {
-      border-radius: 1rem;
-      overflow: hidden;
-      border: 1px solid rgba(243,192,69,0.25);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.85);
-      max-height: 260px;
-    }
-
-    /* FOIRES & MARCHÉS */
-
-    .locations-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1rem;
-      font-size: 0.86rem;
-    }
-
-    .location-card {
-      padding: 0.9rem;
-      border-radius: 0.9rem;
-      background: rgba(12,12,12,0.85);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .location-card h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-      color: var(--accent-yellow-soft);
-    }
-
-    .location-card span {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    /* COMMANDE */
-
-    .order-wrapper {
-      display: grid;
-      grid-template-columns: minmax(0,1.3fr) minmax(0, 1fr);
-      gap: 1.4rem;
-      align-items: start;
-    }
-
-    form {
-      background: rgba(10,10,10,0.95);
-      border-radius: 1rem;
-      border: 1px solid rgba(243,192,69,0.28);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.85);
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.8rem;
-    }
-
-    .form-group {
-      margin-bottom: 0.75rem;
-    }
-
-    label {
-      display: block;
-      font-size: 0.8rem;
-      margin-bottom: 0.2rem;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 0.5rem 0.6rem;
-      border-radius: 0.55rem;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(12,12,12,0.9);
-      color: var(--text-light);
-      font-size: 0.86rem;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: #666;
-    }
-
-    textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-
-    .form-hint {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.15rem;
-    }
-
-    .order-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-    }
-
-    .order-side {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .order-side h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.4rem;
-      color: var(--text-light);
-    }
-
-    .order-list {
-      margin-top: 0.5rem;
-      display: grid;
-      gap: 0.35rem;
-    }
-
-    .order-list li {
-      list-style: none;
-      position: relative;
-      padding-left: 0.9rem;
-    }
-
-    .order-list li::before {
-      content: "▹";
-      position: absolute;
-      left: 0;
-      color: var(--accent-yellow);
-      font-size: 0.7rem;
-    }
-
-    .warning {
-      margin-top: 0.8rem;
-      padding: 0.55rem 0.7rem;
-      border-radius: 0.6rem;
-      border: 1px solid rgba(217,83,79,0.45);
-      background: rgba(120,26,23,0.3);
-      color: #f7d4d3;
-      font-size: 0.75rem;
-    }
-
-    /* CONTACT / FOOTER */
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.1fr) minmax(0, 1fr);
-      gap: 1.4rem;
-      font-size: 0.86rem;
-    }
-
-    .contact-card {
-      background: rgba(10,10,10,0.9);
-      border-radius: 0.9rem;
-      padding: 0.9rem;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .contact-row {
-      margin-bottom: 0.4rem;
-    }
-
-    .contact-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 1.2rem 1.25rem 1.6rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      background: radial-gradient(circle at top, #181818 0, #050505 60%);
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.6rem;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 880px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 1.2rem;
-      }
-      .hero-media {
-        order: -1;
-      }
-      .story-grid,
-      .order-wrapper,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-toggle {
-        display: block;
-      }
-      nav {
-        position: absolute;
-        inset: 100% 0 auto;
-        background: rgba(5,5,5,0.98);
-        padding: 0.5rem 1.25rem 0.8rem;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        display: none;
-      }
-      nav.open {
-        display: flex;
-      }
-      .hero h2 {
-        font-size: 1.8rem;
-      }
+      font-size:.9rem;
+      width: fit-content;
+    }
+    h1{
+      margin:12px 0 10px;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height:1.08;
+      letter-spacing:.2px;
+    }
+    .lead{color:var(--muted); font-size:1.05rem; margin:0 0 16px}
+    .signature{
+      margin-top: 10px;
+      font-style: italic;
+      color: rgba(240,215,154,.92);
+    }
+    .hero-actions{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 14px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      text-decoration:none;
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight:700;
+    }
+    .btn:hover{background: rgba(255,255,255,.07)}
+    .btn.gold{
+      border-color: rgba(215,179,106,.55);
+      background: linear-gradient(180deg, rgba(215,179,106,.22), rgba(215,179,106,.12));
+    }
+
+    /* SIDE CARD */
+    .side-card .mini-title{
+      font-weight:850; letter-spacing:.4px; text-transform:uppercase; font-size:.95rem;
+    }
+    .klist{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px}
+    .klist li{
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      padding:12px;
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+    }
+    .klist strong{color:var(--text)}
+    .pillrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+    .pill{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size:.9rem;
+    }
+
+    /* SECTIONS */
+    section{padding: 26px 0}
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between; gap:16px; flex-wrap:wrap;
+      margin: 0 0 12px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: clamp(22px, 2.2vw, 30px);
+      letter-spacing:.2px;
+    }
+    .section-title p{margin:0; color:var(--muted)}
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 900px){ .grid3{grid-template-columns:1fr} }
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--r2);
+      background: rgba(255,255,255,.03);
+      padding: 16px;
+      box-shadow: 0 16px 38px rgba(0,0,0,.25);
+    }
+    .card h3{margin:0 0 8px}
+    .card p{margin:0; color:var(--muted)}
+    .card .price{
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px dashed rgba(245,245,245,.15);
+      color: rgba(240,215,154,.92);
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .callout{
+      border:1px solid rgba(215,179,106,.40);
+      background: rgba(215,179,106,.10);
+      border-radius: var(--r2);
+      padding: 16px;
+      color: var(--text);
+      margin-top:14px;
+    }
+    .callout p{margin:0; color: rgba(245,245,245,.9)}
+    .two{
+      display:grid; gap:14px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 900px){ .two{grid-template-columns:1fr} }
+
+    /* FORM */
+    .form{
+      display:grid;
+      gap:12px;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 10px;
+    }
+    .form .full{grid-column: 1 / -1}
+    label{display:block; font-size:.92rem; color:var(--muted); margin:0 0 6px}
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(215,179,106,.55);
+      box-shadow: 0 0 0 4px rgba(215,179,106,.10);
+    }
+    .form-actions{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-start;
+      margin-top: 6px;
+    }
+    .note{
+      color: var(--muted);
+      font-size: .92rem;
+      margin-top: 10px;
+    }
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid var(--line);
+      padding: 22px 0 30px;
+      color: var(--muted);
+    }
+    .footgrid{
+      display:grid; gap:14px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items:start;
+    }
+    @media (max-width: 900px){ .footgrid{grid-template-columns:1fr} }
+    .small{font-size:.9rem; color: rgba(245,245,245,.65)}
+    .tiny{font-size:.86rem; color: rgba(245,245,245,.55)}
+    .sep{height:1px; background: var(--line); margin: 16px 0}
+    .gold{color: rgba(240,215,154,.92)}
+    .hide{display:none}
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(16,16,16,.95);
+      border: 1px solid rgba(215,179,106,.35);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.45);
+      max-width: min(560px, calc(100% - 24px));
+      z-index: 80;
     }
   </style>
 </head>
+
 <body>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Aller en haut">
+          <img src="./assets/logo-soleil.png" alt="Logo Le Soleil en Bouche (soleil doré)">
+          <div>
+            <div class="name">LE SOLEIL EN BOUCHE</div>
+            <div class="tag">Meilleurs avec la bouche qu’avec les yeux</div>
+          </div>
+        </a>
 
-<header>
-  <div class="nav-inner">
-    <div class="brand">
-      <div class="brand-mark">LSB</div>
-      <div class="brand-text">
-        <h1>LE SOLEIL EN BOUCHE</h1>
-        <span>Fabrication Artisanale Varoise</span>
+        <nav class="menu" aria-label="Navigation">
+          <a href="#produits">Produits</a>
+          <a href="#pack">Pack découverte</a>
+          <a href="#marches">Marchés</a>
+          <a href="#livraison">Livraison</a>
+          <a href="#commande" class="cta">Commander</a>
+        </nav>
       </div>
     </div>
-    <div class="nav-toggle" id="navToggle">☰</div>
-    <nav id="mainNav">
-      <a href="#produits">Produits</a>
-      <a href="#savoirfaire">Savoir-faire</a>
-      <a href="#marches">Marchés & foires</a>
-      <a href="#commande" class="nav-cta">Commander</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-copy">
-    <div class="hero-badge">
-      <span>Tapenades & olives artisanales</span>
-      <span>• Var, Sud de la France</span>
-    </div>
-    <h2>
-      Le goût du <span>marché</span>,  
-      livré jusqu’à ta table.
-    </h2>
-    <p class="hero-subtitle">
-      LE SOLEIL EN BOUCHE, c’est un stand d’olives et de tapenades comme on les aime : grands saladiers en bois, recettes généreuses, fabrication artisanale varoise, et désormais possibilité de commander à distance à partir d’un kilo.
-    </p>
-    <div class="hero-highlights">
-      <span class="pill">Recettes maison</span>
-      <span class="pill">Préparées à la demande</span>
-      <span class="pill">Idéal apéros & événements</span>
-      <span class="pill">Possibilité de volumes pros</span>
-    </div>
-    <div class="hero-actions">
-      <a href="#commande" class="btn btn-primary">Faire une demande de commande</a>
-      <a href="#produits" class="btn btn-ghost">Découvrir les tapenades</a>
-    </div>
-    <p class="hero-note">
-      Pour l’instant, les commandes se font sur devis : tu remplis le formulaire, nous te répondons avec les tarifs, les modalités d’expédition et le règlement.
-    </p>
   </div>
 
-  <div class="hero-media">
-    <div class="hero-card">
-      <div class="hero-image-wrap">
-        <!-- Remplacer par une photo de stand frontal -->
-        <img src="images/stand-foire.jpg" alt="Stand Le Soleil en Bouche sur un salon">
-        <div class="hero-caption">Stand « Le Soleil en Bouche » en salon gourmand</div>
-      </div>
-      <div class="hero-card-body">
-        <h3>LE SOLEIL EN BOUCHE</h3>
-        <p>Tapenades, olives, condiments & mélanges apéritifs servies en direct sur les marchés, foires et galeries marchandes du Sud.</p>
-        <div class="hero-stats">
-          <span><span class="dot"></span>Fabrication artisanale varoise</span>
-          <span><span class="dot"></span>Commandes à partir d’1 kg</span>
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="panel">
+          <div class="badge">☀️ Artisan • Marchés du Sud • 100% vegan</div>
+          <h1>Olives & tapenades artisanales.<br>Le goût du marché, livré chez vous.</h1>
+          <p class="lead">
+            Des recettes sincères, inspirées des légumes du soleil et des olives.
+            Ici, on mise sur ce qui compte : la dégustation.
+          </p>
+          <div class="signature">« Meilleurs avec la bouche qu’avec les yeux »</div>
+
+          <div class="hero-actions">
+            <a class="btn gold" href="#pack">Voir le Pack Découverte</a>
+            <a class="btn" href="#commande">Passer commande</a>
+            <a class="btn" href="#marches">Où nous trouver</a>
+          </div>
+
+          <div class="note">
+            Frais de port offerts dès <span class="gold"><strong>150 €</strong></span>.
+            Paiement par <span class="gold"><strong>virement</strong></span> (CB prévue plus tard).
+          </div>
         </div>
+
+        <aside class="panel side-card">
+          <div class="mini-title">En bref</div>
+          <ul class="klist">
+            <li><strong>Pack découverte</strong><br>5 pots de 200 g (1 kg) – idéal cadeau & dégustation.</li>
+            <li><strong>Livraison</strong><br>Colissimo ou Chrono Fresh selon saison – bocaux en verre.</li>
+            <li><strong>Minimum</strong><br>Composition à partir de <strong>1 kg</strong> au total.</li>
+          </ul>
+          <div class="pillrow" aria-label="Atouts">
+            <span class="pill">🫒 Bocaux hermétiques</span>
+            <span class="pill">🌿 Vegan</span>
+            <span class="pill">🇫🇷 Var / Sud</span>
+          </div>
+        </aside>
       </div>
     </div>
-  </div>
-</section>
-
-<main>
+  </header>
 
   <!-- PRODUITS -->
   <section id="produits">
-    <div class="section-header">
-      <div>
-        <div class="section-title">Nos <span>tapenades</span> & olives</div>
-        <p class="section-subtitle">
-          Tapenades d’olives noires ou vertes, olives marinées, recettes du moment… Les recettes peuvent évoluer selon les saisons et les salons. Voici les grands classiques que tu peux commander.
-        </p>
-      </div>
-    </div>
-
-    <div class="products-grid">
-
-      <article class="card">
-        <div class="card-tag">Incontournable</div>
-        <div class="card-image">
-          <!-- Photo gros plan tapenade noire -->
-          <img src="images/tapenade-noire.jpg" alt="Tapenade d'olives noires">
-        </div>
-        <h3>Tapenade d’olives noires</h3>
-        <p>Recette généreuse à base d’olives noires, câpres, huile d’olive, ail et herbes. Un goût puissant et typé, comme sur le stand.</p>
-        <div class="chips">
-          <span class="chip">Apéros & planches</span>
-          <span class="chip">Tartinable</span>
-          <span class="chip">Idéal restauration</span>
-        </div>
-        <div class="card-meta">
-          <span>Conditionnement : seaux d’1 kg ou 2 kg</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-tag">Tout public</div>
-        <div class="card-image">
-          <!-- Photo gros plan tapenade verte -->
-          <img src="images/tapenade-verte.jpg" alt="Tapenade d'olives vertes">
-        </div>
-        <h3>Tapenade d’olives vertes</h3>
-        <p>Plus douce, plus fraîche, parfaite pour plaire au plus grand nombre. Super sur des toasts, en sandwich ou en accompagnement de salades.</p>
-        <div class="chips">
-          <span class="chip">Goût doux</span>
-          <span class="chip">Familles & événements</span>
-          <span class="chip">À marier avec poissons</span>
-        </div>
-        <div class="card-meta">
-          <span>À partir d’1 kg par recette</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-tag">Recettes du moment</div>
-        <div class="card-image">
-          <!-- Photo plateau varié -->
-          <img src="images/tapenade-speciale.jpg" alt="Tapenades spéciales et recettes du moment">
-        </div>
-        <h3>Tapenades spéciales</h3>
-        <p>Tapenade aux tomates, version relevée, sans ail, sans anchois… Selon les marchés et les demandes, plusieurs recettes peuvent être proposées.</p>
-        <div class="chips">
-          <span class="chip">Adaptable</span>
-          <span class="chip">Événements & traiteurs</span>
-          <span class="chip">Recettes personnalisées</span>
-        </div>
-        <div class="card-meta">
-          <span>Sur demande dans le formulaire</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-tag">Olives en vrac</div>
-        <div class="card-image">
-          <!-- Photo des seaux d'olives -->
-          <img src="images/olives-stand.jpg" alt="Sélection d'olives sur le stand">
-        </div>
-        <h3>Olives préparées</h3>
-        <p>Olives vertes, noires, cassées, à l’ail, aux herbes, aux épices… Comme sur le stand, tu peux commander des mélanges complets pour tes buffets, bars à tapas ou cavistes.</p>
-        <div class="chips">
-          <span class="chip">Garnières d’apéros</span>
-          <span class="chip">Bars à vins</span>
-          <span class="chip">Épiceries fines</span>
-        </div>
-        <div class="card-meta">
-          <span>Quantités à définir ensemble</span>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- SAVOIR-FAIRE -->
-  <section id="savoirfaire">
-    <div class="section-header">
-      <div>
-        <div class="section-title">Notre <span>savoir-faire</span></div>
-        <p class="section-subtitle">
-          LE SOLEIL EN BOUCHE, c’est d’abord un stand physique : les clients goûtent, choisissent, discutent. Les mêmes recettes qui font le succès sur les marchés sont désormais disponibles sur commande.
-        </p>
-      </div>
-    </div>
-
-    <div class="story-grid">
-      <div class="story-block">
-        <h3>De la vasque à ton assiette</h3>
-        <p>
-          Les tapenades et olives sont préparées dans l’esprit des marchés du Sud : grands contenants, belles matières, ingrédients simples et travaillés juste comme il faut.
-        </p>
-        <ul class="story-points">
-          <li>Recettes maison inspirées des marchés provençaux.</li>
-          <li>Sélection d’olives et d’ingrédients travaillés avec soin.</li>
-          <li>Préparation par fournées, en fonction des stands et des commandes.</li>
-          <li>Possibilité d’adapter certaines recettes (sans ail, plus ou moins relevé…).</li>
-        </ul>
-        <p class="badge-line">
-          Fabrication artisanale varoise – production à taille humaine pour préserver le goût et la qualité.
-        </p>
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Produits phares</h2>
+        <p>Tarifs indicatifs au kilo, comme au marché.</p>
       </div>
 
-      <div class="story-photo">
-        <!-- Photo latérale du stand en galerie ou allée -->
-        <img src="images/stand-galerie.jpg" alt="Vue latérale du stand Le Soleil en Bouche">
+      <div class="grid3">
+        <div class="card">
+          <h3>Tapenades classiques</h3>
+          <p>Recettes artisanales, franches et gourmandes. Parfait à l’apéro, en sandwich, sur toast ou en cuisine.</p>
+          <div class="price">49 € / kg</div>
+        </div>
+
+        <div class="card">
+          <h3>Olivade noire à la figue</h3>
+          <p>Une version plus douce, plus ronde, parfaite pour surprendre sans être “trop sucrée”.</p>
+          <div class="price">69 € / kg</div>
+        </div>
+
+        <div class="card">
+          <h3>Gamme truffe</h3>
+          <p>Pour les grandes occasions : truffe, notes intenses, finition premium. À sortir quand tu veux marquer le coup.</p>
+          <div class="price">89 € / kg</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>Note :</strong> sur certains salons, les tarifs peuvent être majorés (logistique & événements). En ligne, on reste clair et simple.</p>
       </div>
     </div>
   </section>
 
-  <!-- MARCHÉS & FOIRES -->
+  <!-- PACK -->
+  <section id="pack">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Pack Découverte</h2>
+        <p>Le meilleur point d’entrée pour goûter “en vrai”.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <h3>⭐ Pack Découverte – 1 kg</h3>
+          <p>
+            Cinq bocaux de <strong>200 g</strong> (soit <strong>1 kg</strong>).
+            Un pack parfait pour offrir ou découvrir nos recettes.
+          </p>
+          <p class="note">Composition : 3 classiques + 1 figue + 1 truffe (pack type). On ajuste selon disponibilités.</p>
+          <div class="price">À commander via le formulaire</div>
+
+          <div class="form-actions">
+            <a class="btn gold" href="#commande">Commander le Pack</a>
+            <a class="btn" href="#livraison">Voir livraison</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Pourquoi ce pack marche</h3>
+          <p>
+            Parce qu’il transforme l’hésitation en dégustation.
+            Une fois que tu as goûté, tu comprends la signature :
+            <span class="gold"><strong>meilleurs avec la bouche qu’avec les yeux</strong></span>.
+          </p>
+          <div class="sep"></div>
+          <p class="small">
+            Astuce marchés : propose le pack comme “cadeau prêt à offrir”.
+            C’est simple, lisible, et ça augmente le panier moyen sans forcer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARCHÉS -->
   <section id="marches">
-    <div class="section-header">
-      <div>
-        <div class="section-title">Marchés & <span>salons</span></div>
-        <p class="section-subtitle">
-          Tu peux découvrir LE SOLEIL EN BOUCHE en vrai, sur nos stands : en galeries marchandes, salons gourmands, foires régionales… Et si tu nous as découvert là, tu peux maintenant commander ce que tu as goûté.
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Marchés & événements</h2>
+        <p>D’avril à octobre : marchés réguliers. Toute l’année : salons.</p>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <h3>Marchés réguliers (avril → octobre)</h3>
+          <p class="small">
+            La Valette-du-Var • Lorgues • Cavalaire • Salles-sur-Verdon • La Capte (Hyères)
+            • Le Rayol-Canadel • La Favière (Bormes) • La Croix-Valmer
+          </p>
+          <p class="note">Les jours/horaires peuvent varier selon la saison et les événements.</p>
+        </div>
+
+        <div class="card">
+          <h3>Salons</h3>
+          <p class="small">
+            Salon du Goût Thierry Marx (Paris, octobre) • SAVIM Marseille (novembre) •
+            Saveurs & Gastronomie Paris Champerret (décembre) • Édition d’avril •
+            Salon du Barbecue (Parc Floral, Paris)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVRAISON -->
+  <section id="livraison">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Livraison & paiement</h2>
+        <p>Simple, transparent, sans mauvaises surprises.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>Expédition</h3>
+          <p>Colissimo ou Chrono Fresh selon la saison. Bocaux hermétiques en verre, bien protégés.</p>
+        </div>
+        <div class="card">
+          <h3>Minimum</h3>
+          <p>Commande “composition” à partir de <strong>1 kg</strong> au total (ex. 5 x 200 g).</p>
+        </div>
+        <div class="card">
+          <h3>Frais de port</h3>
+          <p>Offerts dès <strong>150 €</strong>. Sinon calculés selon poids/saison/transport.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p>
+          <strong>Paiement :</strong> virement bancaire (CB prévue plus tard).
+          Dès validation, on te confirme dispo + total + mode d’envoi.
         </p>
       </div>
     </div>
+  </section>
 
-    <div class="locations-grid">
-      <article class="location-card">
-        <h3>Galeries & centres commerciaux</h3>
-        <span>Stands réguliers en galeries marchandes (type supermarché U, galeries de centre commercial…). Dates variables selon les périodes.</span>
-      </article>
+  <!-- À PROPOS -->
+  <section id="apropos">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>À propos</h2>
+        <p>Une marque de marché, pensée pour être dégustée.</p>
+      </div>
 
-      <article class="location-card">
-        <h3>Salons & foires gastronomiques</h3>
-        <span>Participation à des salons gourmands, foires régionales et événements dédiés aux produits du terroir.</span>
-      </article>
+      <div class="two">
+        <div class="card">
+          <h3>Le Soleil en Bouche</h3>
+          <p>
+            On travaille des recettes inspirées du Sud : olives, légumes du soleil, goût net.
+            C’est artisanal, direct, et assumé.
+          </p>
+          <p class="note">100% vegan • Marchés & événementiel • Var / Sud de la France</p>
+        </div>
 
-      <article class="location-card">
-        <h3>Marchés & événements privés</h3>
-        <span>Possibilité d’étudier des prestations spéciales : marchés de Noël, événements d’entreprise, journées portes ouvertes, etc.</span>
-      </article>
+        <div class="card">
+          <h3>La signature</h3>
+          <p class="gold"><strong>Meilleurs avec la bouche qu’avec les yeux</strong></p>
+          <p class="small">
+            Parce qu’on préfère te convaincre au goût, pas avec du blabla.
+            Le reste, c’est la dégustation qui tranche.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- COMMANDE -->
   <section id="commande">
-    <div class="section-header">
-      <div>
-        <div class="section-title">Demande de <span>commande</span></div>
-        <p class="section-subtitle">
-          Ce formulaire te permet de faire une demande de commande à partir d’1 kg par recette. Nous te répondons avec un devis, les délais de préparation et les solutions d’expédition.
-        </p>
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Commander</h2>
+        <p>En 30 secondes : tu envoies, on te répond rapidement avec dispo + total.</p>
       </div>
-    </div>
 
-    <div class="order-wrapper">
-      <form method="post" action="">
-        <!-- À connecter plus tard à un système d'envoi de mail ou back-end -->
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nom">Nom / prénom *</label>
-            <input type="text" id="nom" name="nom" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Adresse e-mail *</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="telephone">Téléphone</label>
-            <input type="tel" id="telephone" name="telephone" placeholder="Pour te joindre facilement si besoin">
-          </div>
-        </div>
+      <div class="card">
+        <p class="small">
+          Remplis le formulaire. Il ouvre ton appli mail avec un message prêt.
+          Tu peux aussi nous contacter directement :
+          <span class="gold"><strong id="phoneText">📞 06 00 00 00 00</strong></span> •
+          <span class="gold"><strong id="mailText">✉️ contact@lesoleilenbouche.com</strong></span>
+        </p>
 
-        <div class="form-group">
-          <label for="adresse">Adresse de livraison (si déjà connue)</label>
-          <textarea id="adresse" name="adresse" placeholder="Rue, code postal, ville, pays"></textarea>
-        </div>
+        <!-- IMPORTANT : modifie ces 2 valeurs plus bas dans le script (PHONE_NUMBER et EMAIL_TO) -->
+        <form id="orderForm" class="form" autocomplete="on">
+          <div>
+            <label for="name">Nom</label>
+            <input id="name" name="name" placeholder="Votre nom" required />
+          </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="type-client">Tu es *</label>
-            <select id="type-client" name="type-client" required>
-              <option value="">Choisis…</option>
-              <option value="particulier">Particulier</option>
-              <option value="pro">Professionnel (restaurateur, traiteur, cave, épicerie…)</option>
-              <option value="evenement">Organisation d’événement / association</option>
+          <div>
+            <label for="city">Ville</label>
+            <input id="city" name="city" placeholder="Votre ville" />
+          </div>
+
+          <div>
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="phone" placeholder="06..." inputmode="tel" />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" placeholder="vous@email.com" inputmode="email" />
+          </div>
+
+          <div>
+            <label for="want">Je veux</label>
+            <select id="want" name="want">
+              <option value="Pack découverte (5x200g = 1 kg)">Pack découverte (5x200g = 1 kg)</option>
+              <option value="Composition libre (minimum 1 kg)">Composition libre (minimum 1 kg)</option>
+              <option value="Infos / devis / disponibilité">Infos / devis / disponibilité</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="quantite">Quantité totale souhaitée (en kg)</label>
-            <input type="number" id="quantite" name="quantite" min="1" step="0.5" placeholder="Ex : 3">
-            <div class="form-hint">Minimum indicatif : 1 kg par recette.</div>
+
+          <div>
+            <label for="ship">Mode de livraison</label>
+            <select id="ship" name="ship">
+              <option value="À définir (selon saison)">À définir (selon saison)</option>
+              <option value="Colissimo">Colissimo</option>
+              <option value="Chrono Fresh">Chrono Fresh</option>
+              <option value="Remise en main propre (marché)">Remise en main propre (marché)</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label for="details">Détails (quantités, goûts, contraintes)</label>
+            <textarea id="details" name="details" placeholder="Ex : 2 tapenades classiques, 1 figue, 2 truffe, livraison Colissimo…"></textarea>
+          </div>
+
+          <div class="full form-actions">
+            <button type="submit" class="btn gold" style="cursor:pointer">Envoyer la demande</button>
+            <a class="btn" href="#produits">Voir les tarifs</a>
+          </div>
+
+          <div class="full note">
+            En envoyant, vous acceptez d’être recontacté pour valider la disponibilité, le total et les modalités (paiement par virement).
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footgrid">
+        <div>
+          <div class="gold" style="font-weight:900; letter-spacing:.5px; text-transform:uppercase;">
+            Le Soleil en Bouche
+          </div>
+          <div class="small">Meilleurs avec la bouche qu’avec les yeux</div>
+          <div class="sep"></div>
+          <div class="tiny">
+            Entreprise FLATTET (EURL) • SIREN 898002902 • SIRET 89800290200028 • TVA FR73898002902<br>
+            Siège : La Valette-du-Var (Var) • Créée le 01/04/2021 • Activité : commerce de détail alimentaire sur marchés & événementiel
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="recettes">Recettes souhaitées *</label>
-          <textarea id="recettes" name="recettes" required placeholder="Exemple : 2 kg tapenade olives noires, 1 kg tapenade olives vertes, 1 kg olives marinées assorties…"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="infos">Infos complémentaires</label>
-          <textarea id="infos" name="infos" placeholder="Date de ton événement, contraintes (sans ail, sans anchois…), type d’usage (revente, apéro, restaurant)…"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Envoyer ma demande de commande</button>
-        <p class="order-note">
-          Aucun paiement en ligne n’est débité automatiquement. Tu recevras d’abord une réponse avec un devis précis et les modalités de règlement.
-        </p>
-      </form>
-
-      <aside class="order-side">
-        <h3>Comment ça se passe concrètement ?</h3>
-        <ul class="order-list">
-          <li>Tu remplis le formulaire en indiquant les recettes et quantités souhaitées.</li>
-          <li>Nous vérifions la faisabilité, les délais, le conditionnement et l’expédition.</li>
-          <li>Tu reçois un devis avec les tarifs, le transport et le mode de règlement.</li>
-          <li>Une fois validé, la préparation est lancée et les produits sont expédiés selon ce qui a été convenu.</li>
-        </ul>
-
-        <div class="warning">
-          Les envois alimentaires doivent respecter des règles d’hygiène et de conservation. Certaines zones ou périodes peuvent limiter l’expédition ; nous te le préciserons au moment du devis.
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-header">
-      <div>
-        <div class="section-title">Nous <span>contacter</span></div>
-        <p class="section-subtitle">
-          Une question, un gros volume, une demande spéciale pour un salon ou un événement ? Tu peux aussi nous joindre directement.
-        </p>
-      </div>
-    </div>
-
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-row">
-          <div class="contact-label">E-mail</div>
-          <div><a href="mailto:contact@lesoleilenbouche.fr">contact@lesoleilenbouche.fr</a></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-label">Téléphone</div>
-          <div>06 00 00 00 00</div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-label">Basé dans</div>
-          <div>Le Var, Sud de la France – Présence régulière sur marchés, foires et salons.</div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-label">Réseaux sociaux</div>
-          <div>Instagram / Facebook (à ajouter quand les comptes seront en ligne).</div>
+        <div>
+          <div class="small">
+            <strong>Contact</strong><br>
+            <span id="footerPhone">📞 06 00 00 00 00</span><br>
+            <span id="footerMail">✉️ contact@lesoleilenbouche.com</span><br>
+            Instagram : <span class="gold"><strong>@lesoleilenbouche</strong></span>
+          </div>
+          <div class="sep"></div>
+          <div class="tiny">
+            Expédition : Colissimo / Chrono Fresh selon saison • Bocaux en verre • 100% vegan<br>
+            Frais de port offerts dès 150 € • Paiement : virement (CB prévue plus tard)
+          </div>
         </div>
       </div>
 
-      <div class="contact-card">
-        <div class="contact-label">À venir</div>
-        <p>
-          Mentions légales, conditions générales de vente et informations détaillées sur les allergènes seront ajoutées au fur et à mesure de l’évolution de la vente à distance.
-        </p>
-      </div>
+      <div class="sep"></div>
+      <div class="tiny">© <span id="year"></span> Le Soleil en Bouche. Tous droits réservés.</div>
     </div>
-  </section>
+  </footer>
 
-</main>
+  <div id="toast" class="toast hide" role="status" aria-live="polite"></div>
 
-<footer>
-  <div class="footer-inner">
-    <span>© <span id="year"></span> Le Soleil en Bouche – Tapenades & olives artisanales varoises.</span>
-    <span>Site en cours de développement – Mentions légales & CGV à venir.</span>
-  </div>
-</footer>
+  <script>
+    // =========================
+    // ✅ À MODIFIER (2 lignes)
+    // =========================
+    const PHONE_NUMBER = "06 00 00 00 00";          // <-- mets le vrai numéro
+    const EMAIL_TO     = "contact@lesoleilenbouche.com"; // <-- mets le vrai email
 
-<script>
-  // Année dynamique
-  document.getElementById('year').textContent = new Date().getFullYear();
+    // Mise à jour affichage
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("phoneText").textContent = "📞 " + PHONE_NUMBER;
+    document.getElementById("mailText").textContent  = "✉️ " + EMAIL_TO;
+    document.getElementById("footerPhone").textContent = "📞 " + PHONE_NUMBER;
+    document.getElementById("footerMail").textContent  = "✉️ " + EMAIL_TO;
 
-  // Menu mobile
-  const navToggle = document.getElementById('navToggle');
-  const mainNav = document.getElementById('mainNav');
-  navToggle.addEventListener('click', () => {
-    mainNav.classList.toggle('open');
-  });
-</script>
+    const toast = document.getElementById("toast");
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.remove("hide");
+      clearTimeout(window.__t);
+      window.__t = setTimeout(() => toast.classList.add("hide"), 3200);
+    }
 
+    // Form -> mailto (simple & efficace sur GitHub Pages)
+    document.getElementById("orderForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const data = new FormData(e.target);
+      const name = (data.get("name") || "").toString().trim();
+      const city = (data.get("city") || "").toString().trim();
+      const phone = (data.get("phone") || "").toString().trim();
+      const email = (data.get("email") || "").toString().trim();
+      const want = data.get("want");
+      const ship = data.get("ship");
+      const details = (data.get("details") || "").toString().trim();
+
+      const subject = encodeURIComponent("Commande / Demande – Le Soleil en Bouche");
+      const bodyLines = [
+        "Bonjour,",
+        "",
+        "Je souhaite : " + want,
+        "Mode de livraison : " + ship,
+        "",
+        "Coordonnées :",
+        "Nom : " + name,
+        "Ville : " + (city || "-"),
+        "Téléphone : " + (phone || "-"),
+        "Email : " + (email || "-"),
+        "",
+        "Détails :",
+        (details || "-"),
+        "",
+        "Merci,",
+        name
+      ];
+      const body = encodeURIComponent(bodyLines.join("\n"));
+
+      const mailto = `mailto:${encodeURIComponent(EMAIL_TO)}?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+
+      showToast("Mail prêt à envoyer ✅ (vérifie puis envoie)");
+    });
+  </script>
 </body>
 </html>

@@ -1,727 +1,313 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Le Soleil en Bouche – Olives & tapenades artisanales</title>
-  <meta name="description" content="Le Soleil en Bouche : olives et tapenades artisanales du Sud, 100% vegan. Marchés & salons. Pack découverte et commandes." />
-  <meta name="theme-color" content="#0b0b0b" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Le Soleil en Bouche" />
-  <meta property="og:description" content="Meilleurs avec la bouche qu’avec les yeux. Olives & tapenades artisanales, 100% vegan. Marchés & salons." />
-  <meta property="og:type" content="website" />
+  <meta charset="UTF-8">
+  <title>Le Soleil en Bouche – Produits artisanaux du Sud</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Le Soleil en Bouche – Olives, tapenades et créations artisanales. Meilleurs avec la bouche qu’avec les yeux. Marchés, salons et commandes.">
+  <meta name="theme-color" content="#000000">
 
   <style>
-    :root{
-      --bg:#070707;
-      --card:#101010;
-      --text:#f5f5f5;
-      --muted:rgba(245,245,245,.72);
-      --line:rgba(245,245,245,.12);
-      --accent:#d7b36a; /* doré */
-      --accent2:#f0d79a;
-      --shadow: 0 18px 45px rgba(0,0,0,.45);
-      --r: 18px;
-      --r2: 26px;
+    :root {
+      --bg: #000;
+      --card: #0f0f0f;
+      --text: #f5f5f5;
+      --muted: rgba(255,255,255,.75);
+      --gold: #d7b36a;
+      --line: rgba(255,255,255,.12);
+      --radius: 18px;
       --max: 1100px;
-      --pad: clamp(16px, 3.5vw, 28px);
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 20% -10%, rgba(215,179,106,.16), transparent 60%),
-                  radial-gradient(900px 700px at 90% 0%, rgba(240,215,154,.10), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.55;
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(140%) blur(10px);
-      background: rgba(7,7,7,.75);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:12px 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; text-decoration:none;
-      min-width: 240px;
-    }
-    .brand img{
-      width:46px; height:46px; object-fit:contain;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));
-    }
-    .brand .name{
-      font-weight:850; letter-spacing:.6px; text-transform:uppercase;
-      line-height:1.05;
-    }
-    .brand .tag{
-      font-size:.93rem; color:var(--muted);
-      margin-top:2px;
-    }
-    .menu{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-      align-items:center;
-    }
-    .menu a{
-      text-decoration:none;
-      padding:8px 10px;
-      border:1px solid transparent;
-      border-radius:12px;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-    .menu a:hover{
-      border-color:var(--line);
-      color:var(--text);
-      background: rgba(255,255,255,.04);
-    }
-    .cta{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      text-decoration:none;
-      border:1px solid rgba(215,179,106,.38);
-      background: linear-gradient(180deg, rgba(215,179,106,.22), rgba(215,179,106,.12));
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(900px 600px at 20% 0%, rgba(215,179,106,.18), transparent 60%), var(--bg);
       color: var(--text);
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
-      font-weight:700;
-      white-space:nowrap;
+      line-height: 1.6;
     }
-    .cta:hover{
-      border-color: rgba(215,179,106,.75);
-      background: linear-gradient(180deg, rgba(240,215,154,.24), rgba(215,179,106,.14));
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: var(--max);
+      margin: auto;
+      padding: 0 18px;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,.85);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      height: 52px;
+      width: auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.1rem;
+      letter-spacing: .5px;
+    }
+
+    .brand-text span {
+      font-style: italic;
+      font-size: .95rem;
+      color: var(--gold);
+    }
+
+    nav a {
+      margin-left: 14px;
+      font-size: .95rem;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--text);
     }
 
     /* HERO */
-    .hero{padding: 42px 0 18px}
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.35fr .65fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    @media (max-width: 900px){
-      .hero-grid{grid-template-columns:1fr; }
-      .brand{min-width:unset}
-    }
-    .panel{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid var(--line);
-      border-radius: var(--r2);
-      box-shadow: var(--shadow);
-      padding: clamp(18px, 3vw, 26px);
-      position:relative;
-      overflow:hidden;
-    }
-    .panel:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(520px 320px at 12% 0%, rgba(215,179,106,.18), transparent 60%),
-                  radial-gradient(450px 280px at 90% 0%, rgba(240,215,154,.12), transparent 58%);
-      pointer-events:none;
-      opacity:.9;
-    }
-    .panel > *{position:relative}
-    .badge{
-      display:inline-flex;
-      gap:8px; align-items:center;
-      border: 1px solid rgba(215,179,106,.40);
-      background: rgba(215,179,106,.10);
-      color: var(--text);
-      padding:6px 10px;
-      border-radius: 999px;
-      font-size:.9rem;
-      width: fit-content;
-    }
-    h1{
-      margin:12px 0 10px;
-      font-size: clamp(28px, 3.4vw, 44px);
-      line-height:1.08;
-      letter-spacing:.2px;
-    }
-    .lead{color:var(--muted); font-size:1.05rem; margin:0 0 16px}
-    .signature{
-      margin-top: 10px;
-      font-style: italic;
-      color: rgba(240,215,154,.92);
-    }
-    .hero-actions{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:11px 14px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      text-decoration:none;
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      font-weight:700;
-    }
-    .btn:hover{background: rgba(255,255,255,.07)}
-    .btn.gold{
-      border-color: rgba(215,179,106,.55);
-      background: linear-gradient(180deg, rgba(215,179,106,.22), rgba(215,179,106,.12));
+    .hero {
+      padding: 60px 0 40px;
+      text-align: center;
     }
 
-    /* SIDE CARD */
-    .side-card .mini-title{
-      font-weight:850; letter-spacing:.4px; text-transform:uppercase; font-size:.95rem;
+    .hero h1 {
+      font-size: clamp(30px, 4vw, 46px);
+      margin-bottom: 10px;
     }
-    .klist{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px}
-    .klist li{
-      border:1px solid var(--line);
-      border-radius: var(--r);
-      padding:12px;
-      background: rgba(255,255,255,.03);
+
+    .hero p {
       color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 720px;
+      margin: auto;
     }
-    .klist strong{color:var(--text)}
-    .pillrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
-    .pill{
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:6px 10px;
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-size:.9rem;
+
+    .hero .signature {
+      margin-top: 12px;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(215,179,106,.28), rgba(215,179,106,.14));
+      border: 1px solid rgba(215,179,106,.6);
+      font-weight: 700;
     }
 
     /* SECTIONS */
-    section{padding: 26px 0}
-    .section-title{
-      display:flex; align-items:end; justify-content:space-between; gap:16px; flex-wrap:wrap;
-      margin: 0 0 12px;
+    section {
+      padding: 50px 0;
     }
-    .section-title h2{
-      margin:0;
-      font-size: clamp(22px, 2.2vw, 30px);
-      letter-spacing:.2px;
+
+    h2 {
+      text-align: center;
+      font-size: 1.9rem;
+      margin-bottom: 26px;
     }
-    .section-title p{margin:0; color:var(--muted)}
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
+
+    .grid {
+      display: grid;
+      gap: 18px;
     }
-    @media (max-width: 900px){ .grid3{grid-template-columns:1fr} }
-    .card{
-      border:1px solid var(--line);
-      border-radius: var(--r2);
-      background: rgba(255,255,255,.03);
-      padding: 16px;
-      box-shadow: 0 16px 38px rgba(0,0,0,.25);
+
+    @media (min-width: 900px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
     }
-    .card h3{margin:0 0 8px}
-    .card p{margin:0; color:var(--muted)}
-    .card .price{
-      margin-top:12px;
-      padding-top:12px;
-      border-top:1px dashed rgba(245,245,245,.15);
-      color: rgba(240,215,154,.92);
-      font-weight:800;
-      letter-spacing:.2px;
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
     }
-    .callout{
-      border:1px solid rgba(215,179,106,.40);
-      background: rgba(215,179,106,.10);
-      border-radius: var(--r2);
-      padding: 16px;
-      color: var(--text);
-      margin-top:14px;
+
+    .price {
+      margin-top: 14px;
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 1.05rem;
     }
-    .callout p{margin:0; color: rgba(245,245,245,.9)}
-    .two{
-      display:grid; gap:14px;
-      grid-template-columns: 1fr 1fr;
-    }
-    @media (max-width: 900px){ .two{grid-template-columns:1fr} }
 
     /* FORM */
-    .form{
-      display:grid;
-      gap:12px;
-      grid-template-columns: 1fr 1fr;
-      margin-top: 10px;
+    form {
+      display: grid;
+      gap: 14px;
+      max-width: 700px;
+      margin: auto;
     }
-    .form .full{grid-column: 1 / -1}
-    label{display:block; font-size:.92rem; color:var(--muted); margin:0 0 6px}
-    input, textarea, select{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 14px;
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: #050505;
       color: var(--text);
-      outline:none;
     }
-    textarea{min-height:120px; resize:vertical}
-    input:focus, textarea:focus, select:focus{
-      border-color: rgba(215,179,106,.55);
-      box-shadow: 0 0 0 4px rgba(215,179,106,.10);
-    }
-    .form-actions{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-start;
-      margin-top: 6px;
-    }
-    .note{
-      color: var(--muted);
-      font-size: .92rem;
-      margin-top: 10px;
+
+    button {
+      padding: 16px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 700;
+      background: linear-gradient(180deg, rgba(215,179,106,.3), rgba(215,179,106,.15));
+      color: var(--text);
+      cursor: pointer;
     }
 
     /* FOOTER */
-    footer{
-      border-top:1px solid var(--line);
-      padding: 22px 0 30px;
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 0;
+      font-size: .9rem;
       color: var(--muted);
     }
-    .footgrid{
-      display:grid; gap:14px;
-      grid-template-columns: 1.2fr .8fr;
-      align-items:start;
-    }
-    @media (max-width: 900px){ .footgrid{grid-template-columns:1fr} }
-    .small{font-size:.9rem; color: rgba(245,245,245,.65)}
-    .tiny{font-size:.86rem; color: rgba(245,245,245,.55)}
-    .sep{height:1px; background: var(--line); margin: 16px 0}
-    .gold{color: rgba(240,215,154,.92)}
-    .hide{display:none}
 
-    /* Toast */
-    .toast{
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      background: rgba(16,16,16,.95);
-      border: 1px solid rgba(215,179,106,.35);
+    footer strong {
       color: var(--text);
-      padding: 12px 14px;
-      border-radius: 14px;
-      box-shadow: 0 18px 40px rgba(0,0,0,.45);
-      max-width: min(560px, calc(100% - 24px));
-      z-index: 80;
     }
   </style>
 </head>
 
 <body>
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Aller en haut">
-          <img src="./logo-soleil.png" alt="Logo Le Soleil en Bouche">
-          <div>
-            <div class="name">LE SOLEIL EN BOUCHE</div>
-            <div class="tag">Meilleurs avec la bouche qu’avec les yeux</div>
-          </div>
-        </a>
 
-        <nav class="menu" aria-label="Navigation">
-          <a href="#produits">Produits</a>
-          <a href="#pack">Pack découverte</a>
-          <a href="#marches">Marchés</a>
-          <a href="#livraison">Livraison</a>
-          <a href="#commande" class="cta">Commander</a>
-        </nav>
+<header>
+  <div class="wrap header-inner">
+    <div class="brand">
+      <img src="./logo-soleil.png" alt="Le Soleil en Bouche">
+      <div class="brand-text">
+        <strong>LE SOLEIL EN BOUCHE</strong>
+        <span>Meilleurs avec la bouche qu’avec les yeux</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#produits">Produits</a>
+      <a href="#pack">Pack découverte</a>
+      <a href="#commande">Commander</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Olives & créations artisanales du Sud</h1>
+    <p>
+      Des recettes sincères, inspirées des marchés méditerranéens.
+      Ici, le goût passe avant tout.
+    </p>
+    <div class="signature">Meilleurs avec la bouche qu’avec les yeux</div>
+    <a href="#pack" class="cta">Découvrir le Pack Découverte</a>
+  </div>
+</section>
+
+<section id="produits">
+  <div class="wrap">
+    <h2>Nos produits</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Tapenades classiques</h3>
+        <p>Recettes artisanales, franches et gourmandes.</p>
+        <div class="price">49 € / kg</div>
+      </div>
+      <div class="card">
+        <h3>Olivade figue</h3>
+        <p>Douce, ronde, parfaite pour surprendre.</p>
+        <div class="price">69 € / kg</div>
+      </div>
+      <div class="card">
+        <h3>Gamme truffe</h3>
+        <p>Produits premium pour les grandes occasions.</p>
+        <div class="price">89 € / kg</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- HERO -->
-  <header class="hero" id="top">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="panel">
-          <div class="badge">☀️ Artisan • Marchés du Sud • 100% vegan</div>
-          <h1>Olives & tapenades artisanales.<br>Le goût du marché, livré chez vous.</h1>
-          <p class="lead">
-            Des recettes sincères, inspirées des légumes du soleil et des olives.
-            Ici, on mise sur ce qui compte : la dégustation.
-          </p>
-          <div class="signature">« Meilleurs avec la bouche qu’avec les yeux »</div>
-
-          <div class="hero-actions">
-            <a class="btn gold" href="#pack">Voir le Pack Découverte</a>
-            <a class="btn" href="#commande">Passer commande</a>
-            <a class="btn" href="#marches">Où nous trouver</a>
-          </div>
-
-          <div class="note">
-            Frais de port offerts dès <span class="gold"><strong>150 €</strong></span>.
-            Paiement par <span class="gold"><strong>virement</strong></span> (CB prévue plus tard).
-          </div>
-        </div>
-
-        <aside class="panel side-card">
-          <div class="mini-title">En bref</div>
-          <ul class="klist">
-            <li><strong>Pack découverte</strong><br>5 pots de 200 g (1 kg) – idéal cadeau & dégustation.</li>
-            <li><strong>Livraison</strong><br>Colissimo ou Chrono Fresh selon saison – bocaux en verre.</li>
-            <li><strong>Minimum</strong><br>Composition à partir de <strong>1 kg</strong> au total.</li>
-          </ul>
-          <div class="pillrow" aria-label="Atouts">
-            <span class="pill">🫒 Bocaux hermétiques</span>
-            <span class="pill">🌿 Vegan</span>
-            <span class="pill">🇫🇷 Var / Sud</span>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </header>
-
-  <!-- PRODUITS -->
-  <section id="produits">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Produits phares</h2>
-        <p>Tarifs indicatifs au kilo, comme au marché.</p>
-      </div>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>Tapenades classiques</h3>
-          <p>Recettes artisanales, franches et gourmandes. Parfait à l’apéro, en sandwich, sur toast ou en cuisine.</p>
-          <div class="price">49 € / kg</div>
-        </div>
-
-        <div class="card">
-          <h3>Olivade noire à la figue</h3>
-          <p>Une version plus douce, plus ronde, parfaite pour surprendre sans être “trop sucrée”.</p>
-          <div class="price">69 € / kg</div>
-        </div>
-
-        <div class="card">
-          <h3>Gamme truffe</h3>
-          <p>Pour les grandes occasions : truffe, notes intenses, finition premium. À sortir quand tu veux marquer le coup.</p>
-          <div class="price">89 € / kg</div>
-        </div>
-      </div>
-
-      <div class="callout">
-        <p><strong>Note :</strong> sur certains salons, les tarifs peuvent être majorés (logistique & événements). En ligne, on reste clair et simple.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PACK -->
-  <section id="pack">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Pack Découverte</h2>
-        <p>Le meilleur point d’entrée pour goûter “en vrai”.</p>
-      </div>
-
-      <div class="two">
-        <div class="card">
-          <h3>⭐ Pack Découverte – 1 kg</h3>
-          <p>
-            Cinq bocaux de <strong>200 g</strong> (soit <strong>1 kg</strong>).
-            Un pack parfait pour offrir ou découvrir nos recettes.
-          </p>
-          <p class="note">Composition : 3 classiques + 1 figue + 1 truffe (pack type). On ajuste selon disponibilités.</p>
-          <div class="price">À commander via le formulaire</div>
-
-          <div class="form-actions">
-            <a class="btn gold" href="#commande">Commander le Pack</a>
-            <a class="btn" href="#livraison">Voir livraison</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Pourquoi ce pack marche</h3>
-          <p>
-            Parce qu’il transforme l’hésitation en dégustation.
-            Une fois que tu as goûté, tu comprends la signature :
-            <span class="gold"><strong>meilleurs avec la bouche qu’avec les yeux</strong></span>.
-          </p>
-          <div class="sep"></div>
-          <p class="small">
-            Astuce marchés : propose le pack comme “cadeau prêt à offrir”.
-            C’est simple, lisible, et ça augmente le panier moyen sans forcer.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MARCHÉS -->
-  <section id="marches">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Marchés & événements</h2>
-        <p>D’avril à octobre : marchés réguliers. Toute l’année : salons.</p>
-      </div>
-
-      <div class="two">
-        <div class="card">
-          <h3>Marchés réguliers (avril → octobre)</h3>
-          <p class="small">
-            La Valette-du-Var • Lorgues • Cavalaire • Salles-sur-Verdon • La Capte (Hyères)
-            • Le Rayol-Canadel • La Favière (Bormes) • La Croix-Valmer
-          </p>
-          <p class="note">Les jours/horaires peuvent varier selon la saison et les événements.</p>
-        </div>
-
-        <div class="card">
-          <h3>Salons</h3>
-          <p class="small">
-            Salon du Goût Thierry Marx (Paris, octobre) • SAVIM Marseille (novembre) •
-            Saveurs & Gastronomie Paris Champerret (décembre) • Édition d’avril •
-            Salon du Barbecue (Parc Floral, Paris)
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIVRAISON -->
-  <section id="livraison">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Livraison & paiement</h2>
-        <p>Simple, transparent, sans mauvaises surprises.</p>
-      </div>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>Expédition</h3>
-          <p>Colissimo ou Chrono Fresh selon la saison. Bocaux hermétiques en verre, bien protégés.</p>
-        </div>
-        <div class="card">
-          <h3>Minimum</h3>
-          <p>Commande “composition” à partir de <strong>1 kg</strong> au total (ex. 5 x 200 g).</p>
-        </div>
-        <div class="card">
-          <h3>Frais de port</h3>
-          <p>Offerts dès <strong>150 €</strong>. Sinon calculés selon poids/saison/transport.</p>
-        </div>
-      </div>
-
-      <div class="callout">
-        <p>
-          <strong>Paiement :</strong> virement bancaire (CB prévue plus tard).
-          Dès validation, on te confirme dispo + total + mode d’envoi.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- À PROPOS -->
-  <section id="apropos">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>À propos</h2>
-        <p>Une marque de marché, pensée pour être dégustée.</p>
-      </div>
-
-      <div class="two">
-        <div class="card">
-          <h3>Le Soleil en Bouche</h3>
-          <p>
-            On travaille des recettes inspirées du Sud : olives, légumes du soleil, goût net.
-            C’est artisanal, direct, et assumé.
-          </p>
-          <p class="note">100% vegan • Marchés & événementiel • Var / Sud de la France</p>
-        </div>
-
-        <div class="card">
-          <h3>La signature</h3>
-          <p class="gold"><strong>Meilleurs avec la bouche qu’avec les yeux</strong></p>
-          <p class="small">
-            Parce qu’on préfère te convaincre au goût, pas avec du blabla.
-            Le reste, c’est la dégustation qui tranche.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMMANDE -->
-  <section id="commande">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Commander</h2>
-        <p>En 30 secondes : tu envoies, on te répond rapidement avec dispo + total.</p>
-      </div>
-
+<section id="pack">
+  <div class="wrap">
+    <h2>Pack Découverte</h2>
+    <div class="grid grid-2">
       <div class="card">
-        <p class="small">
-          Remplis le formulaire. Il ouvre ton appli mail avec un message prêt.
-          Tu peux aussi nous contacter directement :
-          <span class="gold"><strong id="phoneText">📞 06 00 00 00 00</strong></span> •
-          <span class="gold"><strong id="mailText">✉️ contact@lesoleilenbouche.com</strong></span>
+        <h3>5 bocaux de 200 g (1 kg)</h3>
+        <p>
+          Le meilleur moyen de découvrir notre univers.
+          Idéal en cadeau ou première commande.
         </p>
-
-        <!-- IMPORTANT : modifie ces 2 valeurs plus bas dans le script (PHONE_NUMBER et EMAIL_TO) -->
-        <form id="orderForm" class="form" autocomplete="on">
-          <div>
-            <label for="name">Nom</label>
-            <input id="name" name="name" placeholder="Votre nom" required />
-          </div>
-
-          <div>
-            <label for="city">Ville</label>
-            <input id="city" name="city" placeholder="Votre ville" />
-          </div>
-
-          <div>
-            <label for="phone">Téléphone</label>
-            <input id="phone" name="phone" placeholder="06..." inputmode="tel" />
-          </div>
-
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" placeholder="vous@email.com" inputmode="email" />
-          </div>
-
-          <div>
-            <label for="want">Je veux</label>
-            <select id="want" name="want">
-              <option value="Pack découverte (5x200g = 1 kg)">Pack découverte (5x200g = 1 kg)</option>
-              <option value="Composition libre (minimum 1 kg)">Composition libre (minimum 1 kg)</option>
-              <option value="Infos / devis / disponibilité">Infos / devis / disponibilité</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="ship">Mode de livraison</label>
-            <select id="ship" name="ship">
-              <option value="À définir (selon saison)">À définir (selon saison)</option>
-              <option value="Colissimo">Colissimo</option>
-              <option value="Chrono Fresh">Chrono Fresh</option>
-              <option value="Remise en main propre (marché)">Remise en main propre (marché)</option>
-            </select>
-          </div>
-
-          <div class="full">
-            <label for="details">Détails (quantités, goûts, contraintes)</label>
-            <textarea id="details" name="details" placeholder="Ex : 2 tapenades classiques, 1 figue, 2 truffe, livraison Colissimo…"></textarea>
-          </div>
-
-          <div class="full form-actions">
-            <button type="submit" class="btn gold" style="cursor:pointer">Envoyer la demande</button>
-            <a class="btn" href="#produits">Voir les tarifs</a>
-          </div>
-
-          <div class="full note">
-            En envoyant, vous acceptez d’être recontacté pour valider la disponibilité, le total et les modalités (paiement par virement).
-          </div>
-        </form>
+        <div class="price">Composition type – ajustable</div>
+      </div>
+      <div class="card">
+        <p>
+          Une fois goûté, on comprend la signature :
+          <strong style="color:var(--gold)">meilleurs avec la bouche qu’avec les yeux</strong>.
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="wrap">
-      <div class="footgrid">
-        <div>
-          <div class="gold" style="font-weight:900; letter-spacing:.5px; text-transform:uppercase;">
-            Le Soleil en Bouche
-          </div>
-          <div class="small">Meilleurs avec la bouche qu’avec les yeux</div>
-          <div class="sep"></div>
-          <div class="tiny">
-            Entreprise FLATTET (EURL) • SIREN 898002902 • SIRET 89800290200028 • TVA FR73898002902<br>
-            Siège : La Valette-du-Var (Var) • Créée le 01/04/2021 • Activité : commerce de détail alimentaire sur marchés & événementiel
-          </div>
-        </div>
+<section id="commande">
+  <div class="wrap">
+    <h2>Commander</h2>
 
-        <div>
-          <div class="small">
-            <strong>Contact</strong><br>
-            <span id="footerPhone">📞 06 00 00 00 00</span><br>
-            <span id="footerMail">✉️ contact@lesoleilenbouche.com</span><br>
-            Instagram : <span class="gold"><strong>@lesoleilenbouche</strong></span>
-          </div>
-          <div class="sep"></div>
-          <div class="tiny">
-            Expédition : Colissimo / Chrono Fresh selon saison • Bocaux en verre • 100% vegan<br>
-            Frais de port offerts dès 150 € • Paiement : virement (CB prévue plus tard)
-          </div>
-        </div>
-      </div>
+    <form action="mailto:tristanflattet83160@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="Nom" placeholder="Votre nom" required>
+      <input type="email" name="Email" placeholder="Votre email">
+      <input type="tel" name="Téléphone" placeholder="Téléphone">
+      <select name="Commande">
+        <option>Pack découverte</option>
+        <option>Composition libre (min. 1 kg)</option>
+        <option>Informations</option>
+      </select>
+      <textarea name="Message" placeholder="Votre demande"></textarea>
+      <button type="submit">Envoyer la demande</button>
+    </form>
 
-      <div class="sep"></div>
-      <div class="tiny">© <span id="year"></span> Le Soleil en Bouche. Tous droits réservés.</div>
-    </div>
-  </footer>
+    <p style="text-align:center;margin-top:18px;">
+      📞 06 03 63 34 07 – ✉️ tristanflattet83160@gmail.com  
+      <br>📍 Marchés & salons – Var
+    </p>
+  </div>
+</section>
 
-  <div id="toast" class="toast hide" role="status" aria-live="polite"></div>
+<footer>
+  <div class="wrap">
+    <strong>FLATTET – EURL</strong><br>
+    SIRET : 898 002 902 00028 – TVA : FR73898002902<br>
+    16 lotissement Le Clos Margot, 100 impasse des Chaumes, 83160 La Valette-du-Var<br><br>
+    Instagram : <strong>@lesoleilenbouche</strong>
+  </div>
+</footer>
 
-  <script>
-    // =========================
-    // ✅ À MODIFIER (2 lignes)
-    // =========================
-    const PHONE_NUMBER = "06 00 00 00 00";          // <-- mets le vrai numéro
-    const EMAIL_TO     = "contact@lesoleilenbouche.com"; // <-- mets le vrai email
-
-    // Mise à jour affichage
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("phoneText").textContent = "📞 " + PHONE_NUMBER;
-    document.getElementById("mailText").textContent  = "✉️ " + EMAIL_TO;
-    document.getElementById("footerPhone").textContent = "📞 " + PHONE_NUMBER;
-    document.getElementById("footerMail").textContent  = "✉️ " + EMAIL_TO;
-
-    const toast = document.getElementById("toast");
-    function showToast(msg){
-      toast.textContent = msg;
-      toast.classList.remove("hide");
-      clearTimeout(window.__t);
-      window.__t = setTimeout(() => toast.classList.add("hide"), 3200);
-    }
-
-    // Form -> mailto (simple & efficace sur GitHub Pages)
-    document.getElementById("orderForm").addEventListener("submit", function(e){
-      e.preventDefault();
-
-      const data = new FormData(e.target);
-      const name = (data.get("name") || "").toString().trim();
-      const city = (data.get("city") || "").toString().trim();
-      const phone = (data.get("phone") || "").toString().trim();
-      const email = (data.get("email") || "").toString().trim();
-      const want = data.get("want");
-      const ship = data.get("ship");
-      const details = (data.get("details") || "").toString().trim();
-
-      const subject = encodeURIComponent("Commande / Demande – Le Soleil en Bouche");
-      const bodyLines = [
-        "Bonjour,",
-        "",
-        "Je souhaite : " + want,
-        "Mode de livraison : " + ship,
-        "",
-        "Coordonnées :",
-        "Nom : " + name,
-        "Ville : " + (city || "-"),
-        "Téléphone : " + (phone || "-"),
-        "Email : " + (email || "-"),
-        "",
-        "Détails :",
-        (details || "-"),
-        "",
-        "Merci,",
-        name
-      ];
-      const body = encodeURIComponent(bodyLines.join("\n"));
-
-      const mailto = `mailto:${encodeURIComponent(EMAIL_TO)}?subject=${subject}&body=${body}`;
-      window.location.href = mailto;
-
-      showToast("Mail prêt à envoyer ✅ (vérifie puis envoie)");
-    });
-  </script>
 </body>
 </html>

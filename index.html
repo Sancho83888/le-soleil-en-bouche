@@ -206,7 +206,28 @@
     .brand img { height: 44px; }
     nav a { margin-left: 10px; font-size: .92rem; }
   }
-</style>
+.socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(215,179,106,.6);
+  color: var(--gold);
+  transition: all .25s ease;
+}
+
+.socials a:hover {
+  background: rgba(215,179,106,.15);
+  transform: translateY(-2px);
+}
 </style>
 </head>
 

@@ -87,12 +87,22 @@
     .card h3{margin:0 0 8px}
     .meta{font-size:.95rem;color:rgba(255,255,255,.72);margin-top:6px}
     .price{margin-top:14px;color:var(--gold);font-weight:900;font-size:1.05rem}
+
+    /* ✅ MINIATURES PRODUITS : carré + fond noir + même rendu partout */
     .thumb{
       width:100%;
       max-width:260px;
       display:block;
       margin:0 auto 14px;
+
+      aspect-ratio: 1 / 1;     /* force le carré */
+      object-fit: contain;     /* garde le pot entier */
+      background:#000;         /* fond noir derrière l'image */
+      border-radius:14px;
+      padding:10px;            /* petit “air” autour comme l’artichaut */
+      border:1px solid rgba(255,255,255,.08);
     }
+
     .thumb-wide{
       width:100%;
       max-width:560px;
@@ -201,11 +211,11 @@
 
       <div class="card">
         <img class="thumb" src="./olivade-noire-figue-1kg.png" alt="Olivade noire figue – Le Soleil en Bouche" />
-  <h3>Olivade noire figue</h3>
-  <p>Douce, ronde, parfaite pour surprendre.</p>
-  <div class="meta">Olive noire grecque, figue séchée.</div>
-  <div class="price">69 € / kg</div>
-</div>
+        <h3>Olivade noire figue</h3>
+        <p>Douce, ronde, parfaite pour surprendre.</p>
+        <div class="meta">Olive noire grecque, figue séchée.</div>
+        <div class="price">69 € / kg</div>
+      </div>
 
       <div class="card">
         <h3>Poivronade</h3>
